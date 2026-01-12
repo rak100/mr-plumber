@@ -12,7 +12,8 @@
     .wrap{max-width:var(--max);margin:0 auto;padding:0 16px}
     header{border-bottom:1px solid #eee;background:#fff}
     .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:12px}
-    .logo{font-weight:800} .logo span{color:var(--brand)}
+    .logo{font-weight:800} .logo span{color:var(--brand)} nav{display:flex;align-items:center;gap:8px}
+    .nav-toggle{position:absolute;opacity:0;pointer-events:none} .nav-toggle-label{display:none} .nav-links{display:flex;gap:4px}
     nav a{text-decoration:none;padding:8px 10px;border-radius:10px}
     nav a:hover{background:#f2f2f2}
     .btn{display:inline-block;background:var(--brand);color:#fff;text-decoration:none;padding:12px 16px;border-radius:12px;font-weight:700}
@@ -32,6 +33,9 @@
     footer{padding:26px 0;border-top:1px solid #eee;color:var(--muted)}
     .small{font-size:.92rem}
     .sr-only{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
+    @media (max-width: 720px){.wrap{padding:0 20px} .nav{flex-direction:column;align-items:flex-start} nav{width:100%;flex-direction:column;align-items:flex-start;gap:8px}
+    .nav-toggle-label{display:inline-flex} .nav-links{display:none;width:100%;flex-direction:column;border:1px solid #eee;border-radius:12px;padding:8px}
+    .nav-links a{padding:8px 10px} .nav-toggle:checked + .nav-toggle-label + .nav-links{display:flex} .btn{width:100%;text-align:center}}
   </style>
 
   <!-- Schema-friendly contact info -->
@@ -59,10 +63,14 @@
   <div class="wrap nav">
     <div class="logo">Mr <span>Reliable</span> Plumbing</div>
     <nav aria-label="Primary">
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="team.html">Team</a>
-      <a href="contact.html">Contact</a>
+      <input class="nav-toggle" type="checkbox" id="nav-toggle" />
+      <label class="btn btn-outline nav-toggle-label" for="nav-toggle">Menu</label>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="team.html">Team</a>
+        <a href="contact.html">Contact</a>
+      </div>
     </nav>
     <a class="btn" href="tel:+19094638802">Call Now: (909) 463-8802</a>
   </div>
